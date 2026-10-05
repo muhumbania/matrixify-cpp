@@ -16,14 +16,17 @@ void matmul_tiled(
     int M, int N, int K,
     int block_size); // Tiled multiplication
 
-inline int matrix_get_index(int row, int col, int stride);
+inline int matrix_get_index(int row, int col, int stride); // To get the index of an element using the row-major formula
 
+// This function is for verification of the accuracy of the results
+// between the naive and optimize approach
 void matrix_verify(
     const float *C_ref,
     const float *C_test,
     int size,
     float epsilon);
 
+// This function is for comparison between the different functions to evaluate which one is faster
 void matrix_benchmark(
     void (*func)(const float *, const float *, float *, int, int, int),
     const float *A,
